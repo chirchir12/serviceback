@@ -40,6 +40,10 @@ module.exports = (sequelize, DataTypes) => {
   SellerProfile.associate = function (models) {
     // associations can be defined here
     SellerProfile.hasMany(models.Certificate);
+    SellerProfile.belongsToMany(models.Job, {
+      through: 'Bids',
+      foreignKey: 'bidderId',
+    });
   };
   return SellerProfile;
 };

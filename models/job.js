@@ -20,6 +20,10 @@ module.exports = (sequelize, DataTypes) => {
   );
   Job.associate = function (models) {
     // associations can be defined here
+    Job.belongsToMany(models.SellerProfile, {
+      through: 'Bids',
+      foreignKey: 'jobId',
+    });
   };
   return Job;
 };
