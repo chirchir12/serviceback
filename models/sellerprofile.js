@@ -39,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   SellerProfile.associate = function (models) {
     // associations can be defined here
+    SellerProfile.hasMany(models.Certificate);
   };
   return SellerProfile;
 };
