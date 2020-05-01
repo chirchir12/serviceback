@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   BuyerProfile.associate = function (models) {
     // associations can be defined here
+    BuyerProfile.hasMany(models.Jobs);
   };
   return BuyerProfile;
 };
