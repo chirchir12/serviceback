@@ -2,10 +2,10 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.addColumn('Certificates', 'SellerProfileId', {
+    return queryInterface.addColumn('Certificates', 'EmployeeProfileId', {
       type: Sequelize.UUID,
       references: {
-        model: 'SellerProfiles',
+        model: 'EmployeeProfiles',
         key: 'id',
       },
       onUpdate: 'CASCADE',
@@ -14,6 +14,6 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.removeColumn('Certificates', 'SellerProfileId');
+    return queryInterface.removeColumn('Certificates', 'EmployeeProfileId');
   },
 };

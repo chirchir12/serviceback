@@ -5,7 +5,7 @@ module.exports = {
     return queryInterface.addColumn('Jobs', 'creatorId', {
       type: Sequelize.UUID,
       references: {
-        model: 'BuyerProfiles',
+        model: 'EmployerProfiles',
         key: 'id',
       },
       onUpdate: 'CASCADE',
