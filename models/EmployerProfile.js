@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
       },
       phone: {
-        type: Sequelize.INTEGER,
+        type: DataTypes.INTEGER,
         validate: {
           isNumeric: true,
         },
@@ -25,9 +25,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  BuyerProfile.associate = function (models) {
+  EmployerProfile.associate = function (models) {
     // associations can be defined here
-    EmployerProfile.hasMany(models.Jobs);
+    EmployerProfile.hasMany(models.Job);
   };
   return EmployerProfile;
 };
