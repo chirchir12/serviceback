@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const BuyerProfile = sequelize.define(
-    'BuyerProfile',
+  const EmployerProfile = sequelize.define(
+    'EmployerProfile',
     {
       id: {
         allowNull: false,
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   BuyerProfile.associate = function (models) {
     // associations can be defined here
-    BuyerProfile.hasMany(models.Jobs);
+    EmployerProfile.hasMany(models.Jobs);
   };
-  return BuyerProfile;
+  return EmployerProfile;
 };
