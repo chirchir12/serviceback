@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   JobCategory.associate = function (models) {
     // associations can be defined here
+    JobCategory.hasMany(models.Job);
   };
   return JobCategory;
 };
