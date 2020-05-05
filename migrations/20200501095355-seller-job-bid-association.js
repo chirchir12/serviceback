@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.UUID,
         primaryKey: true,
         references: {
-          model: 'SellerProfiles',
+          model: 'EmployeeProfiles',
           key: 'id',
         },
       },

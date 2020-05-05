@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const SellerProfile = sequelize.define(
-    'SellerProfile',
+  const EmployeeProfile = sequelize.define(
+    'EmployeeProfile',
     {
       id: {
         allowNull: false,
@@ -37,13 +37,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     {}
   );
-  SellerProfile.associate = function (models) {
+  EmployeeProfile.associate = function (models) {
     // associations can be defined here
-    SellerProfile.hasMany(models.Certificate);
-    SellerProfile.belongsToMany(models.Job, {
+    EmployeeProfile.hasMany(models.Certificate);
+    EmployeeProfile.belongsToMany(models.Job, {
       through: 'Bids',
       foreignKey: 'bidderId',
     });
   };
-  return SellerProfile;
+  return EmployeeProfile;
 };
