@@ -1,4 +1,5 @@
 'use strict';
+const { v4 } = require('uuid')
 module.exports = (sequelize, DataTypes) => {
   const Location = sequelize.define(
     'Location',
@@ -8,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: false,
         primaryKey: true,
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUID4,
+        defaultValue: DataTypes.UUIDV4,
       },
       country: DataTypes.STRING,
       county: DataTypes.STRING,
@@ -17,10 +18,15 @@ module.exports = (sequelize, DataTypes) => {
       location: DataTypes.STRING,
       subLocation: DataTypes.STRING,
     },
+
     {}
   );
+  Location.beforeCreate((location, options) => {
+    return location.id = v4()
+  });
   Location.associate = function (models) {
     // associations can be defined here
+    Location.belongsTo(models.User);
   };
   return Location;
 };

@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: false,
         primaryKey: true,
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUID4,
+        defaultValue: DataTypes.UUIDV4,
       },
       title: DataTypes.STRING,
       description: DataTypes.TEXT,
@@ -20,6 +20,8 @@ module.exports = (sequelize, DataTypes) => {
   );
   Job.associate = function (models) {
     // associations can be defined here
+    Job.belongsTo(models.JobCategory);
+    Job.belongsTo(models.EmployerProfile);
     Job.belongsToMany(models.EmployeeProfile, {
       through: 'Bids',
       foreignKey: 'jobId',

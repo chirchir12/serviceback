@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: false,
         primaryKey: true,
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUID4,
+        defaultValue: DataTypes.UUIDV4,
       },
       name: DataTypes.STRING,
       slug: {

@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: false,
         primaryKey: true,
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUID4,
+        defaultValue: DataTypes.UUIDV4,
       },
       certifiedFor: DataTypes.STRING,
       description: DataTypes.TEXT,
@@ -18,6 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Certificate.associate = function (models) {
     // associations can be defined here
+    Certificate.belongsTo(models.EmployeeProfile);
   };
   return Certificate;
 };

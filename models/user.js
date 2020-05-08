@@ -1,4 +1,6 @@
 'use strict';
+const bcrypt = require('bcrypt');
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     'User',
@@ -27,22 +29,27 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         validate: {
           min: {
-            args: 6,
+            args: 4,
             msg: 'password must be more than 6 characters',
           },
         },
       },
-      isSeller: {
+      isEmployee: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
-      isBuyer: {
+      isEmployer: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
     },
     {}
   );
+  User.beforeCreate((user, options) => {
+    return bcrypt.hash(user.password, 10).then(hashedPw => {
+      user.password = hashedPw;
+    });
+  });
   User.associate = function (models) {
     // associations can be defined here
     User.hasOne(models.EmployeeProfile);

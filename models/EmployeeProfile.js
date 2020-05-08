@@ -39,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   EmployeeProfile.associate = function (models) {
     // associations can be defined here
+    EmployeeProfile.belongsTo(models.User);
     EmployeeProfile.hasMany(models.Certificate);
     EmployeeProfile.belongsToMany(models.Job, {
       through: 'Bids',

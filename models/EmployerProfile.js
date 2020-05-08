@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: false,
         primaryKey: true,
         type: DataTypes.UUID,
-        defaultValue: DataTypes.UUID4,
+        defaultValue: DataTypes.UUIDV4,
       },
       firstName: {
         type: DataTypes.STRING,
@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   EmployerProfile.associate = function (models) {
     // associations can be defined here
     EmployerProfile.hasMany(models.Job);
+    EmployerProfile.belongsTo(models.User);
   };
   return EmployerProfile;
 };

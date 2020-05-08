@@ -31,11 +31,11 @@ module.exports = {
           },
         },
       },
-      isSeller: {
+      isEmployee: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
-      isBuyer: {
+      isEmployer: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
