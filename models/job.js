@@ -21,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
   Job.associate = function (models) {
     // associations can be defined here
     Job.belongsTo(models.JobCategory);
-    Job.belongsTo(models.EmployerProfile);
-    Job.belongsToMany(models.EmployeeProfile, {
+    Job.belongsTo(models.User);
+    Job.belongsToMany(models.User, {
       through: 'Bids',
       foreignKey: 'jobId',
     });

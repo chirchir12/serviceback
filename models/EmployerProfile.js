@@ -27,7 +27,6 @@ module.exports = (sequelize, DataTypes) => {
   );
   EmployerProfile.associate = function (models) {
     // associations can be defined here
-    EmployerProfile.hasMany(models.Job);
     EmployerProfile.belongsTo(models.User);
   };
   return EmployerProfile;

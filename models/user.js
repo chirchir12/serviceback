@@ -46,7 +46,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   User.beforeCreate((user, options) => {
-    return bcrypt.hash(user.password, 10).then(hashedPw => {
+    return bcrypt.hash(user.password, 10).then((hashedPw) => {
       user.password = hashedPw;
     });
   });
@@ -55,6 +55,11 @@ module.exports = (sequelize, DataTypes) => {
     User.hasOne(models.EmployeeProfile);
     User.hasOne(models.EmployerProfile);
     User.hasOne(models.Location);
+    User.hasMany(models.Job);
+    User.belongsToMany(models.Job, {
+      through: 'Bids',
+      foreignKey: 'bidderId',
+    });
   };
   return User;
 };

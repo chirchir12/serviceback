@@ -17,9 +17,9 @@ router.post('/register', (req, res) => {
   return User.create(newUser)
     .then((createdUser) => {
       Location.create({ UserId: createdUser.id });
-      if (createdUser.isBuyer) {
+      if (createdUser.isEmployer) {
         EmployerProfile.create({ UserId: createdUser.id });
-      } else if (createdUser.isSeller) {
+      } else if (createdUser.isEmployee) {
         EmployeeProfile.create({ UserId: createdUser.id });
       }
       return res.status(201).json(createdUser);
